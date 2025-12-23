@@ -51,6 +51,10 @@ This app is designed for learning and revision. Explore the code, experiment, an
 
 ---
 
+![Alt text](https://github.com/Shubham-393/angular_todo/blob/main/Screenshot%20(353).png)
+
+---
+
 ## File-by-File Explanation
 
 ### 1. `src/app/app.component.ts`
