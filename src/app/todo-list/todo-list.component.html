@@ -1,0 +1,78 @@
+<div class="todo-list-container">
+  <h2>My Todos</h2>
+
+  <!-- Empty State -->
+  <div *ngIf="(todos$ | async)?.length === 0" class="empty-state">
+    <p>No todos yet. Create one to get started!</p>
+  </div>
+
+  <!-- Todos List -->
+  <div *ngIf="(todos$ | async)?.length! > 0" class="todos-wrapper">
+    <!-- Stats -->
+    <div class="stats">
+      <span class="stat-item">
+        <strong>Total:</strong> {{ (todos$ | async)?.length || 0 }}
+      </span>
+      <span class="stat-item">
+        <strong>Active:</strong> <span class="active-count">{{ getActiveTodosCount() }}</span>
+      </span>
+      <span class="stat-item">
+        <strong>Completed:</strong> <span class="completed-count">{{ getCompletedTodosCount() }}</span>
+      </span>
+    </div>
+
+    <!-- Todo Items -->
+    <div class="todos-list">
+      <div
+        *ngFor="let todo of todos$ | async"
+        class="todo-item"
+        [class.completed]="todo.completed"
+      >
+        <div class="todo-content">
+          <!-- Checkbox to toggle completion -->
+          <input
+            type="checkbox"
+            [checked]="todo.completed"
+            (change)="toggleTodo(todo.id)"
+            class="todo-checkbox"
+            [attr.aria-label]="'Toggle ' + todo.title"
+          />
+
+          <!-- Todo Details -->
+          <div class="todo-details">
+            <h3 class="todo-title">{{ todo.title }}</h3>
+            <p class="todo-description">{{ todo.description }}</p>
+            <small class="todo-date">
+              Created: {{ todo.createdAt | date: 'medium' }}
+            </small>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="todo-actions">
+          <button
+            class="btn btn-edit"
+            (click)="editTodo(todo)"
+            [attr.aria-label]="'Edit ' + todo.title"
+          >
+            ✏️ Edit
+          </button>
+          <button
+            class="btn btn-delete"
+            (click)="deleteTodo(todo.id)"
+            [attr.aria-label]="'Delete ' + todo.title"
+          >
+            🗑️ Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clear Completed Button -->
+    <div *ngIf="getCompletedTodosCount() > 0" class="clear-section">
+      <button class="btn btn-clear" (click)="clearCompleted()">
+        Clear Completed
+      </button>
+    </div>
+  </div>
+</div>

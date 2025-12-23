@@ -1,0 +1,130 @@
+/* Main Container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.app-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+  padding: 20px 0;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+  margin: 10px 0 0 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Main Content */
+.app-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Form Section */
+.form-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  height: fit-content;
+}
+
+/* List Section */
+.list-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  color: white;
+  padding: 20px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .list-section {
+    max-height: none;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 15px;
+  }
+
+  .form-section,
+  .list-section {
+    padding: 20px;
+  }
+
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+/* Scrollbar styling */
+.list-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.list-section::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.list-section::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
+}
